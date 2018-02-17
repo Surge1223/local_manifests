@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote name="github"
+           fetch="https://github.com"
+           sync-c="true"
+           sync-j="8" />
+
+  <remote name="gitlab"
+           fetch="https://gitlab.com/Surge1223/"
+           sync-c="true"
+           sync-j="8" />
+
+  <remote  name="caf"
+           url="git://codeaurora.org/kernel/msm.git"
+           fetch="git://codeaurora.org/kernel/msm.git"
+           sync-c="true"
+           sync-j="8" />
+
+  <remote name="me"
+           fetch="https://github.com/Surge1223/" 
+           sync-c="true"
+           sync-j="8" />
+
+  <remote name="omnirom"
+           review="gerrit.omnirom.org"
+           fetch="https://github.com/omnirom"
+           sync-j="8" />
+
+  <remote name="cb"
+           fetch="https://github.com/CheekyBastards/" 
+           sync-c="true"
+           sync-j="8" />
+
+  <remote  name="msm"
+           fetch="https://android.googlesource.com/kernel/"
+           sync-c="true"
+           sync-j="8" />    
+           
+  <remote name="pure"
+           fetch="https://github.com/PureNexusProject/" 
+           sync-c="true"
+           sync-j="8" />
+
+
+  <!-- Removed Sources -->
+  <remove-project path="system/sepolicy" name="abc_system_sepolicy" groups="pdk" remote="abc" revision="o2" />
+  <remove-project path="vendor/nexus" name="abc_vendor_nexus" remote="abc" revision="o2" />
+  <remove-project path="frameworks/base" name="abc_frameworks_base" groups="pdk-cw-fs,pdk-fs" remote="abc" revision="o2" />
+  <remove-project path="system/update_engine" name="platform/system/update_engine" groups="pdk" />
+  <remove-project path="packages/apps/Settings" name="abc_packages_apps_Settings" groups="pdk-fs" remote="abc" revision="o2" />
+  <remove-project path="build/make" name="abc_build" remote="abc" revision="o2" groups="pdk" />
+  <remove-project path="system/core" name="abc_system_core" groups="pdk" remote="abc" revision="o2" />
+  
+  <!-- Vendor Source -->
+  <project path="vendor/pure" name="android_vendor_pure" groups="pdk" remote="me" revision="android-8.1" />
+  <project path="vendor/google" name="proprietary_vendor_google" groups="pdk" remote="me" revision="android-8.1" />
+  <project path="vendor/nexus" name="abc_vendor_nexus" groups="pdk" remote="me" revision="o2" />
+  <project path="vendor/gapps" name="vendor_gapps" clone-depth="1" remote="gitlab" revision="o-mr1" />
+
+  <!-- Device Source -->
+  <project path="device/google/taimen" name="android_device_google_taimen" groups="pdk" remote="me" revision="o-mr1" />
+  <project path="device/google/wahoo" name="android_device_google_wahoo" groups="pdk" remote="me" revision="android-8.1" />
+
+  <!-- Kernel Source -->
+  <project  path="kernel/google/taimen" name="android_kernel_google_taimen" groups="device,angler,broadcom_pdk" remote="me" revision="android-msm-wahoo-4.4-oreo-mr1" />
+
+  <!-- Platform Source -->
+  <project path="build/make" name="android_build" remote="me" revision="o2" groups="pdk" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+
+  <project path="frameworks/base" name="abc_frameworks_base" groups="pdk-cw-fs,pdk-fs" remote="me" revision="sysserv"  />
+  <project path="packages/apps/Settings" name="abc_packages_apps_Settings"  remote="me" revision="android-8.1"  />
+  <project path="hardware/google/easel" name="platform/hardware/google/easel" groups="easel"  remote="aosp"  />
+  <project path="system/sepolicy" name="platform_system_sepolicy" groups="pdk" remote="me" revision="o-mr1" />
+  <project path="system/update_engine" name="system_update_engine" remote="me" revision="o-mr1" />
+  <project path="system/core" name="android_system_core" remote="me" revision="o-mr1" />
+
+  <!-- Local manifest -->
+  <project path=".repo/local_manifests/" name="local_manifests" groups="pdk,tradefed" remote="me" revision="master" />
+
+</manifest>
